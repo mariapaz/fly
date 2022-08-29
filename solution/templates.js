@@ -5,12 +5,20 @@ function home(posts, errors = {}, values = {}) {
     <form method="POST">
       <p>
         <label for="nickname">Nickname</label>
-        <input id="nickname" name="nickname" value="${values.nickname || ""}">
+        <input
+          id="nickname"
+          name="nickname"
+          value="${values.nickname ? sanitize(values.nickname) : ""}"
+        >
         ${validation(errors.nickname)}
       </p>
       <p>
         <label for="message">Message</label>
-        <textarea id="message" name="message">${values.message || ""}</textarea>
+        <textarea
+          id="message"
+          name="message">
+            ${values.message ? sanitize(values.message) : ""}
+          </textarea>
         ${validation(errors.message)}
         </p>
       <button>Send</button>
@@ -21,6 +29,10 @@ function home(posts, errors = {}, values = {}) {
     </ul>
   `;
   return layout(title, content);
+}
+
+function sanitize(unsafe) {
+  return unsafe.replace(/</g, "&lt;");
 }
 
 function validation(message) {
@@ -36,8 +48,8 @@ function postItem(post) {
   const prettyDate = date.toLocaleString("en-GB");
   return `
     <li>
-      <p>${post.message}</p>
-      <p>—${post.nickname} | ${prettyDate}</p>
+      <p>${sanitize(post.message)}</p>
+      <p>—${sanitize(post.nickname)} | ${prettyDate}</p>
     </li>
   `;
 }
