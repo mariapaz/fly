@@ -29,7 +29,12 @@ Validation can be as simple as a series of `if` statements that return error res
 
 The server in `challenge/server.js` has two routes: `GET /` shows a form to create new posts and a list of existing posts. `POST /` creates a new post and redirects back to `/` so the list of posts updates.
 
-Currently the form can be submitted with empty fields, which leads to a broken UI as a list item is rendered with no content. Edit the `POST /` handler to check that the values are not empty.
+Currently the form can be submitted with empty fields, which leads to a broken UI as a list item is rendered with no content.
+
+1. Edit the `POST /` handler to check that the values are not empty.
+1. If any values are missing `res.send` the home page again instead of creating a new post and redirecting
+1. Edit the `home` template to display an error message next to each missing field
+1. **Stretch challenge**: keep any previously submitted values in the inputs so the user doesn't have to re-type them
 
 ## Sanitization
 

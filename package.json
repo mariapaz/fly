@@ -1,7 +1,8 @@
 {
   "scripts": {
-    "start": "node src/index.js",
-    "dev": "nodemon src/index.js"
+    "start": "node challenge/index.js",
+    "dev": "nodemon challenge/index.js",
+    "dev:s": "nodemon solution/index.js"
   },
   "dependencies": {
     "express": "^4.18.1"
