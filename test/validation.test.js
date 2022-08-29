@@ -5,7 +5,7 @@ const { request } = require("./helpers.js");
 test("POST without nickname re-renders page with error", async () => {
   const { status, body } = await request("/", {
     method: "POST",
-    body: "message=hello",
+    body: "nickname=&message=hello",
     headers: { "content-type": "application/x-www-form-urlencoded" },
   });
   assert.equal(status, 200);
@@ -20,7 +20,7 @@ test("POST without nickname re-renders page with error", async () => {
 test("POST without message re-renders page with error", async () => {
   const { status, body } = await request("/", {
     method: "POST",
-    body: "nickname=oli",
+    body: "nickname=oli&message=",
     headers: { "content-type": "application/x-www-form-urlencoded" },
   });
   assert.equal(status, 200);
@@ -35,7 +35,7 @@ test("POST without message re-renders page with error", async () => {
 test("POST without either re-renders page with both errors", async () => {
   const { status, body } = await request("/", {
     method: "POST",
-    body: "",
+    body: "nickname=&message=",
     headers: { "content-type": "application/x-www-form-urlencoded" },
   });
   assert.equal(status, 200);
@@ -55,7 +55,7 @@ test("POST without either re-renders page with both errors", async () => {
 test("STRETCH GOAL: POST without message preserves nickname", async () => {
   const { status, body } = await request("/", {
     method: "POST",
-    body: "nickname=oli",
+    body: "nickname=oli&message=",
     headers: { "content-type": "application/x-www-form-urlencoded" },
   });
   assert.equal(status, 200);
