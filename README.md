@@ -1,4 +1,4 @@
-# Validation and sanitization challenge
+# Sanitization and validation challenge
 
 Web applications commonly receive user input and display it on the page. For example a website like Twitter lets people submit messages that are then displayed to other people. It's very important to make sure you are receiving the right information, and that it does not contain any malicious code.
 
