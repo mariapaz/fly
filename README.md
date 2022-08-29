@@ -2,6 +2,21 @@
 
 Web applications commonly receive user input and display it on the page. For example a website like Twitter lets people submit messages that are then displayed to other people. It's very important to make sure you are receiving the right information, and that it does not contain any malicious code.
 
+## Setup
+
+Make sure you have Git and Node (v18) installed.
+
+1. Clone this repo and `cd` into the directory
+1. Run `npm install` to install all the dependencies
+1. Run `npm run dev` to start the server.  
+   This uses the `nodemon` library to auto-restart the server when you save changes.
+
+## Checking your work
+
+Each challenge has associated unit tests. You can either run all the tests with `npm test`, or each individual challenge's tests with `npm run test:1`, `npm run test:2` etc.
+
+Make sure you read test failures carefully—the output can be noisy but the error message should provide useful information to help you.
+
 ## Validation
 
 Your server will receive submissions that are missing information, or include information that is not valid. You cannot rely on _client-side_ validation (like the `required` attribute on input elements), as this can easily be disabled with the browser dev tools. There are also lots of other ways to submit POST requests (e.g. using `curl` in the terminal).
@@ -10,7 +25,11 @@ You must _always_ validate user submitted information on the server, otherwise y
 
 Validation can be as simple as a series of `if` statements that return error responses to the user telling them what they did wrong. In a larger app you would probably user a validation library to make this easier.
 
-### Validation challenge
+### Challenge 1: validation
+
+The server in `challenge/server.js` has two routes: `GET /` shows a form to create new posts and a list of existing posts. `POST /` creates a new post and redirects back to `/` so the list of posts updates.
+
+Currently the form can be submitted with empty fields, which leads to a broken UI as a list item is rendered with no content. Edit the `POST /` handler to check that the values are not empty.
 
 ## Sanitization
 
@@ -37,4 +56,4 @@ You must _always_ sanitize any user input that you want to template into an HTML
 
 Note that the simple approach is not enough stop an attacker—in a production app you should use a well-tested library for sanitization. Templating engines like Handlebars/React/Vue etc all handle sanitization automatically. We need to do it manually here as we are just using JS template literal strings.
 
-### Sanitization challenge
+### Challenge 2: sanitization
