@@ -49,7 +49,7 @@ Note that the simple approach is not enough stop an attacker—in a production a
 Our server currently templates user input directly into the response HTML. This means the app is vulnerable to XSS attacks. Try submitting `<script>alert("hacked")</script>` in the message field. You need to fix this.
 
 1. Create a `sanitize` function that takes an input string and returns a safe sanitized version that cannot be interpreted as valid HTML
-1. Amend `postItem` function in `challenge/template.js` to sanitize the user input
+1. Amend the `postItem` function in `challenge/template.js` to sanitize the user input
 
 ## Validation
 
