@@ -8,7 +8,7 @@ test("POST without nickname re-renders page with error", async () => {
     body: "nickname=&message=hello",
     headers: { "content-type": "application/x-www-form-urlencoded" },
   });
-  assert.equal(status, 200);
+  assert.equal(status, 400);
   assert.match(body, /<form/i, "Page should include the form");
   assert.match(
     body,
@@ -23,7 +23,7 @@ test("POST without message re-renders page with error", async () => {
     body: "nickname=oli&message=",
     headers: { "content-type": "application/x-www-form-urlencoded" },
   });
-  assert.equal(status, 200);
+  assert.equal(status, 400);
   assert.match(body, /<form/i, "Page should include the form");
   assert.match(
     body,
@@ -38,7 +38,7 @@ test("POST without either re-renders page with both errors", async () => {
     body: "nickname=&message=",
     headers: { "content-type": "application/x-www-form-urlencoded" },
   });
-  assert.equal(status, 200);
+  assert.equal(status, 400);
   assert.match(body, /<form/i, "Page should include the form");
   assert.match(
     body,
@@ -58,7 +58,7 @@ test("STRETCH GOAL: POST without message preserves nickname", async () => {
     body: "nickname=oli&message=",
     headers: { "content-type": "application/x-www-form-urlencoded" },
   });
-  assert.equal(status, 200);
+  assert.equal(status, 400);
   assert.match(
     body,
     /value="oli"/i,

@@ -22,7 +22,7 @@ server.post("/", express.urlencoded({ extended: false }), (req, res) => {
   }
   if (Object.keys(errors).length) {
     const body = home(posts, errors, req.body);
-    res.send(body);
+    res.status(400).send(body);
   } else {
     const created = Date.now();
     posts.push({ nickname, message, created });
