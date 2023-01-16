@@ -62,7 +62,7 @@ function layout(title, content) {
         <title>${title}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <style>
-        body{background-color: beige;}
+        body{background-color: beige; color:red}
         </style>
       </head>
       <body>
