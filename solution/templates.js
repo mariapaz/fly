@@ -32,7 +32,7 @@ function home(posts, errors = {}, values = {}) {
 }
 
 function sanitize(unsafe) {
-  return unsafe.replace(/</g, "&lt;");
+  return unsafe.replace(/</, "&lt;");
 }
 
 function validation(message) {
